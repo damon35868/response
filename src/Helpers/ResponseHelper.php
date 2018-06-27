@@ -156,6 +156,7 @@ if (! function_exists('respond')) {
 				'from' => $data->firstItem(),
 				'per_page' => $data->perPage(),
 				'to' => $data->lastItem(),
+				'last_page' => $data->lastPage(),
 				'total' => $data->total(),
 			], $code, $header);
 		}
