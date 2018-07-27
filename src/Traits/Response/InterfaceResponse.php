@@ -172,8 +172,8 @@ trait InterfaceResponse
     {
         if ($data instanceof LengthAwarePaginator) {
 			return new JsonResponse([
-				'resultCode' => $this->statusCode,
-				'resultMessage' => $message,
+				'code' => $this->statusCode,
+				'message' => $message,
 				'data' => $data->items(),
 				'current_page' => $data->currentPage(),
 				'from' => $data->firstItem(),

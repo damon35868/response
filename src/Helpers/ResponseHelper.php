@@ -149,8 +149,8 @@ if (! function_exists('respond')) {
 	function respond($data = [], $message = '请求成功', $code = Response::HTTP_OK, array $header = []) {
 		if ($data instanceof LengthAwarePaginator) {
 			return response()->json([
-				'resultCode' => $code,
-				'resultMessage' => $message,
+				'code' => $code,
+				'message' => $message,
 				'data' => $data->items(),
 				'current_page' => $data->currentPage(),
 				'from' => $data->firstItem(),
@@ -161,8 +161,8 @@ if (! function_exists('respond')) {
 			], $code, $header);
 		}
 		return response()->json([
-			'resultCode' => $code,
-			'resultMessage' => $message,
+			'code' => $code,
+			'message' => $message,
 			'data' => $data ? $data : []
 		], $code, $header);
 	}
