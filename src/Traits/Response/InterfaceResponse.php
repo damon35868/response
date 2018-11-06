@@ -180,12 +180,12 @@ trait InterfaceResponse
 				'per_page' => $data->perPage(),
 				'to' => $data->lastItem(),
 				'total' => $data->total(),
-			], $this->statusCode, $header);
+			], $this->statusCode, $header, JSON_UNESCAPED_UNICODE);
 		}
         return new JsonResponse([
         	'code' => $this->statusCode,
 			'message' => $message,
 			'data' => $data ? $data : []
-		], $this->statusCode, $header);
+		], $this->statusCode, $header, JSON_UNESCAPED_UNICODE);
     }
 }

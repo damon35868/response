@@ -158,12 +158,12 @@ if (! function_exists('respond')) {
 				'to' => $data->lastItem(),
 				'last_page' => $data->lastPage(),
 				'total' => $data->total(),
-			], $code, $header);
+			], $code, $header, JSON_UNESCAPED_UNICODE);
 		}
 		return response()->json([
 			'code' => $code,
 			'message' => $message,
 			'data' => $data ? $data : []
-		], $code, $header);
+		], $code, $header, JSON_UNESCAPED_UNICODE);
 	}
 }
