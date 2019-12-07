@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -11,7 +12,7 @@ if (! function_exists('stored')) {
 	 * @author George
 	 * @param $data
 	 * @param string $message
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return JsonResponse
 	 */
 	function stored($data, $message = '创建成功') {
 		return respond($data, $message);
@@ -26,7 +27,7 @@ if (! function_exists('updated')) {
 	 * @author George
 	 * @param $data
 	 * @param string $message
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return JsonResponse
 	 */
 	function updated($data, $message = '更新成功') {
 		return respond($data, $message);
@@ -40,7 +41,7 @@ if (! function_exists('deleted')) {
 	 * Date: 21/03/2018
 	 * @author George
 	 * @param string $message
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return JsonResponse
 	 */
 	function deleted($message = '删除成功') {
 		return message($message, Response::HTTP_OK);
@@ -54,7 +55,7 @@ if (! function_exists('accepted')) {
 	 * Date: 21/03/2018
 	 * @author George
 	 * @param string $message
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return JsonResponse
 	 */
 	function accepted($message = '请求已接受，等待处理') {
 		return message($message, Response::HTTP_ACCEPTED);
@@ -68,7 +69,7 @@ if (! function_exists('notFound')) {
 	 * Date: 21/03/2018
 	 * @author George
 	 * @param string $message
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return JsonResponse
 	 */
 	function notFound($message = '您访问的资源不存在') {
 		return message($message, Response::HTTP_NOT_FOUND);
@@ -83,7 +84,7 @@ if (! function_exists('internalError')) {
 	 * @author George
 	 * @param $message
 	 * @param int $code
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return JsonResponse
 	 */
 	function internalError($message = '未知错误导致请求失败', $code = Response::HTTP_INTERNAL_SERVER_ERROR) {
 		return message($message, $code);
@@ -98,7 +99,7 @@ if (! function_exists('failed')) {
 	 * @author George
 	 * @param $message
 	 * @param int $code
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return JsonResponse
 	 */
 	function failed($message, $code = Response::HTTP_BAD_REQUEST) {
 		return message($message, $code);
@@ -112,7 +113,7 @@ if (! function_exists('success')) {
 	 * Date: 21/03/2018
 	 * @author George
 	 * @param $date
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return JsonResponse
 	 */
 	function success($date) {
 		return respond($date);
@@ -127,7 +128,7 @@ if (! function_exists('message')) {
 	 * @author George
 	 * @param $message
 	 * @param int $code
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return JsonResponse
 	 */
 	function message($message, $code = Response::HTTP_OK) {
 		return respond([], $message, $code);
@@ -144,7 +145,7 @@ if (! function_exists('respond')) {
 	 * @param string $message
 	 * @param int $code
 	 * @param array $header
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return JsonResponse
 	 */
 	function respond($data = [], $message = '请求成功', $code = Response::HTTP_OK, array $header = []) {
 		if ($data instanceof LengthAwarePaginator) {

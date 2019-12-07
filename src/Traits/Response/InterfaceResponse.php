@@ -44,7 +44,7 @@ trait InterfaceResponse
 	 * @author George
 	 * @param $data
 	 * @param $message
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return JsonResponse
 	 */
     public function stored($data, $message = '创建成功')
     {
@@ -58,7 +58,7 @@ trait InterfaceResponse
 	 * @author George
 	 * @param $data
 	 * @param $message
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return JsonResponse
 	 */
     public function updated($data, $message = '更新成功')
     {
@@ -71,7 +71,7 @@ trait InterfaceResponse
 	 * Date: 19/03/2018
 	 * @author George
 	 * @param $message
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return JsonResponse
 	 */
     public function deleted($message = '删除成功')
     {
@@ -84,7 +84,7 @@ trait InterfaceResponse
 	 * Date: 19/03/2018
 	 * @author George
 	 * @param $message
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return JsonResponse
 	 */
     public function accepted($message = '请求已接受，等待处理')
     {
@@ -97,7 +97,7 @@ trait InterfaceResponse
 	 * Date: 19/03/2018
 	 * @author George
 	 * @param string $message
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return JsonResponse
 	 */
     public function notFound($message = '您访问的资源不存在')
     {
@@ -110,7 +110,7 @@ trait InterfaceResponse
 	 * Date: 19/03/2018
 	 * @author George
 	 * @param string $message
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return JsonResponse
 	 */
     public function internalError($message = '未知错误导致请求失败')
     {
@@ -124,7 +124,7 @@ trait InterfaceResponse
 	 * @author George
 	 * @param $message
 	 * @param int $code
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return JsonResponse
 	 */
     public function failed($message, $code = Response::HTTP_BAD_REQUEST)
     {
@@ -137,7 +137,7 @@ trait InterfaceResponse
 	 * Date: 19/03/2018
 	 * @author George
 	 * @param $data
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return JsonResponse
 	 */
     public function success($data)
     {
@@ -151,7 +151,7 @@ trait InterfaceResponse
 	 * @author George
 	 * @param $message
 	 * @param int $code
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return JsonResponse
 	 */
     public function message($message, $code = Response::HTTP_OK)
     {
@@ -166,7 +166,7 @@ trait InterfaceResponse
 	 * @param array $data
 	 * @param string $message
 	 * @param array $header
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return JsonResponse
 	 */
     public function respond($data = [], $message = '请求成功', array $header = [])
     {
