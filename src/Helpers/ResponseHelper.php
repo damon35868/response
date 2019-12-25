@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 if (! function_exists('stored')) {
@@ -44,7 +43,7 @@ if (! function_exists('deleted')) {
 	 * @return JsonResponse
 	 */
 	function deleted($message = '删除成功') {
-		return message($message, Response::HTTP_OK);
+		return message($message, JsonResponse::HTTP_OK);
 	}
 }
 
@@ -58,7 +57,7 @@ if (! function_exists('accepted')) {
 	 * @return JsonResponse
 	 */
 	function accepted($message = '请求已接受，等待处理') {
-		return message($message, Response::HTTP_ACCEPTED);
+		return message($message, JsonResponse::HTTP_ACCEPTED);
 	}
 }
 
@@ -72,7 +71,7 @@ if (! function_exists('notFound')) {
 	 * @return JsonResponse
 	 */
 	function notFound($message = '您访问的资源不存在') {
-		return message($message, Response::HTTP_NOT_FOUND);
+		return message($message, JsonResponse::HTTP_NOT_FOUND);
 	}
 }
 
@@ -86,7 +85,7 @@ if (! function_exists('internalError')) {
 	 * @param int $code
 	 * @return JsonResponse
 	 */
-	function internalError($message = '未知错误导致请求失败', $code = Response::HTTP_INTERNAL_SERVER_ERROR) {
+	function internalError($message = '未知错误导致请求失败', $code = JsonResponse::HTTP_INTERNAL_SERVER_ERROR) {
 		return message($message, $code);
 	}
 }
@@ -101,7 +100,7 @@ if (! function_exists('failed')) {
 	 * @param int $code
 	 * @return JsonResponse
 	 */
-	function failed($message, $code = Response::HTTP_BAD_REQUEST) {
+	function failed($message, $code = JsonResponse::HTTP_BAD_REQUEST) {
 		return message($message, $code);
 	}
 }
@@ -130,7 +129,7 @@ if (! function_exists('message')) {
 	 * @param int $code
 	 * @return JsonResponse
 	 */
-	function message($message, $code = Response::HTTP_OK) {
+	function message($message, $code = JsonResponse::HTTP_OK) {
 		return respond([], $message, $code);
 	}
 }
@@ -147,24 +146,24 @@ if (! function_exists('respond')) {
 	 * @param array $header
 	 * @return JsonResponse
 	 */
-	function respond($data = [], $message = '请求成功', $code = Response::HTTP_OK, array $header = []) {
+	function respond($data = [], $message = '请求成功', $code = JsonResponse::HTTP_OK, array $header = []) {
 		if ($data instanceof LengthAwarePaginator) {
-			return response()->json([
-				'code' => $code,
-				'message' => $message,
-				'data' => $data->items(),
-				'current_page' => $data->currentPage(),
-				'from' => $data->firstItem(),
-				'per_page' => $data->perPage(),
-				'to' => $data->lastItem(),
-				'last_page' => $data->lastPage(),
-				'total' => $data->total(),
-			], $code, $header, JSON_UNESCAPED_UNICODE);
+		    return JsonResponse::create([
+                'code' => $code,
+                'message' => $message,
+                'data' => $data->items(),
+                'current_page' => $data->currentPage(),
+                'from' => $data->firstItem(),
+                'per_page' => $data->perPage(),
+                'to' => $data->lastItem(),
+                'last_page' => $data->lastPage(),
+                'total' => $data->total(),
+            ], $code, $header);
 		}
-		return response()->json([
-			'code' => $code,
-			'message' => $message,
-			'data' => $data ? $data : []
-		], $code, $header, JSON_UNESCAPED_UNICODE);
+		return JsonResponse::create([
+            'code' => $code,
+            'message' => $message,
+            'data' => $data ? $data : []
+        ], $code, $header);
 	}
 }
