@@ -3,7 +3,6 @@
 namespace Betterde\Traits\Response;
 
 use Illuminate\Http\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
@@ -21,7 +20,7 @@ trait InterfaceResponse
 	 * Date: 19/03/2018
 	 * @author George
 	 */
-    protected $statusCode = Response::HTTP_OK;
+    protected $statusCode = JsonResponse::HTTP_OK;
 
 	/**
 	 * 设置响应状态吗
@@ -48,7 +47,7 @@ trait InterfaceResponse
 	 */
     public function stored($data, $message = '创建成功')
     {
-        return $this->setStatusCode(Response::HTTP_CREATED)->respond($data, $message);
+        return $this->setStatusCode(JsonResponse::HTTP_CREATED)->respond($data, $message);
     }
 
 	/**
@@ -62,7 +61,7 @@ trait InterfaceResponse
 	 */
     public function updated($data, $message = '更新成功')
     {
-        return $this->setStatusCode(Response::HTTP_OK)->respond($data, $message);
+        return $this->setStatusCode(JsonResponse::HTTP_OK)->respond($data, $message);
     }
 
 	/**
@@ -75,7 +74,7 @@ trait InterfaceResponse
 	 */
     public function deleted($message = '删除成功')
     {
-        return $this->setStatusCode(Response::HTTP_NO_CONTENT)->respond([], $message);
+        return $this->setStatusCode(JsonResponse::HTTP_NO_CONTENT)->respond([], $message);
     }
 
 	/**
@@ -88,7 +87,7 @@ trait InterfaceResponse
 	 */
     public function accepted($message = '请求已接受，等待处理')
     {
-        return $this->setStatusCode(Response::HTTP_ACCEPTED)->message($message);
+        return $this->setStatusCode(JsonResponse::HTTP_ACCEPTED)->message($message);
     }
 
 	/**
@@ -101,7 +100,7 @@ trait InterfaceResponse
 	 */
     public function notFound($message = '您访问的资源不存在')
     {
-        return $this->failed($message, Response::HTTP_NOT_FOUND);
+        return $this->failed($message, JsonResponse::HTTP_NOT_FOUND);
     }
 
 	/**
@@ -114,7 +113,7 @@ trait InterfaceResponse
 	 */
     public function internalError($message = '未知错误导致请求失败')
     {
-        return $this->failed($message, Response::HTTP_INTERNAL_SERVER_ERROR);
+        return $this->failed($message, JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
     }
 
 	/**
@@ -126,7 +125,7 @@ trait InterfaceResponse
 	 * @param int $code
 	 * @return JsonResponse
 	 */
-    public function failed($message, $code = Response::HTTP_BAD_REQUEST)
+    public function failed($message, $code = JsonResponse::HTTP_BAD_REQUEST)
     {
         return $this->message($message, $code);
     }
@@ -153,7 +152,7 @@ trait InterfaceResponse
 	 * @param int $code
 	 * @return JsonResponse
 	 */
-    public function message($message, $code = Response::HTTP_OK)
+    public function message($message, $code = JsonResponse::HTTP_OK)
     {
         return $this->setStatusCode($code)->respond([], $message);
     }

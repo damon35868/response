@@ -148,7 +148,7 @@ if (! function_exists('respond')) {
 	 */
 	function respond($data = [], $message = '请求成功', $code = JsonResponse::HTTP_OK, array $header = []) {
 		if ($data instanceof LengthAwarePaginator) {
-		    return JsonResponse::create([
+		    return new JsonResponse([
                 'code' => $code,
                 'message' => $message,
                 'data' => $data->items(),
@@ -158,12 +158,13 @@ if (! function_exists('respond')) {
                 'to' => $data->lastItem(),
                 'last_page' => $data->lastPage(),
                 'total' => $data->total(),
-            ], $code, $header);
-		}
-		return JsonResponse::create([
-            'code' => $code,
-            'message' => $message,
-            'data' => $data ? $data : []
-        ], $code, $header);
+            ], $code, $header, JSON_UNESCAPED_UNICODE);
+		} else {
+            return new JsonResponse([
+                'code' => $code,
+                'message' => $message,
+                'data' => $data ? $data : []
+            ], $code, $header, JSON_UNESCAPED_UNICODE);
+        }
 	}
 }
