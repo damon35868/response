@@ -1,6 +1,6 @@
 <?php
 
-namespace Damon\Traits\Response;
+namespace Damon35868\Traits\Response;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Pagination\LengthAwarePaginator;

@@ -1,5 +1,5 @@
 {
-    "name": "damon/response",
+    "name": "Damon35868/response",
     "description": "Application interface response",
     "keywords": [
         "response",
@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Damon\\Response\\": "src/"
+            "Damon35868\\Response\\": "src/"
         },
         "files": [
             "src/Helpers/ResponseHelper.php"

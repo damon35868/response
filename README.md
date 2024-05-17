@@ -1,12 +1,12 @@
 # Laravel Response
 
-[![Latest Stable Version](https://poser.pugx.org/Damon/response/v/stable)](https://packagist.org/packages/Damon/response)
-[![Total Downloads](https://poser.pugx.org/Damon/response/downloads)](https://packagist.org/packages/Damon/response)
-[![License](https://poser.pugx.org/Damon/response/license)](https://packagist.org/packages/Damon/response)
+[![Latest Stable Version](https://poser.pugx.org/Damon35868/response/v/stable)](https://packagist.org/packages/Damon35868/response)
+[![Total Downloads](https://poser.pugx.org/Damon35868/response/downloads)](https://packagist.org/packages/Damon35868/response)
+[![License](https://poser.pugx.org/Damon35868/response/license)](https://packagist.org/packages/Damon35868/response)
 
 ### 1.Use Trait class in your base controller
 
-`use Damon\Traits\Response\InterfaceResponse;`
+`use Damon35868\Traits\Response\InterfaceResponse;`
 
 > e.g.
 
@@ -16,7 +16,7 @@
    namespace App\Http\Controllers;
 
    use Illuminate\Foundation\Bus\DispatchesJobs;
-   use Damon\Traits\Response\InterfaceResponse;
+   use Damon35868\Traits\Response\InterfaceResponse;
    use Illuminate\Routing\Controller as BaseController;
    use Illuminate\Foundation\Validation\ValidatesRequests;
    use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
