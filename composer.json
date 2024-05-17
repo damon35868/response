@@ -1,10 +1,14 @@
 {
-    "name": "betterde/response",
+    "name": "damon/response",
     "description": "Application interface response",
-    "keywords": ["response", "laravel-response", "betterde"],
+    "keywords": [
+        "response",
+        "laravel-response",
+        "betterde"
+    ],
     "license": "MIT",
     "type": "library",
-    "version": "2.0.1",
+    "version": "0.0.1",
     "authors": [
         {
             "name": "George",
@@ -18,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Betterde\\Response\\": "src/"
+            "Damon\\Response\\": "src/"
         },
         "files": [
             "src/Helpers/ResponseHelper.php"
