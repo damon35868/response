@@ -4,15 +4,15 @@
     "keywords": [
         "response",
         "laravel-response",
-        "betterde"
+        "Betterde"
     ],
     "license": "MIT",
     "type": "library",
     "version": "0.0.1",
     "authors": [
         {
-            "name": "George",
-            "email": "george@betterde.com"
+            "name": "Damon",
+            "email": "damonzhang35868@gamil.com"
         }
     ],
     "require": {
