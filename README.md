@@ -6,7 +6,7 @@
 
 ### 1.Use Trait class in your base controller
 
-`use Damon35868\Traits\Response\InterfaceResponse;`
+`use Damon35868\Response\Traits\InterfaceResponse;`
 
 > e.g.
 
